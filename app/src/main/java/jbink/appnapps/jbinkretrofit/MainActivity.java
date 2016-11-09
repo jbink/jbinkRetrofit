@@ -46,34 +46,34 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... params) {
             //GET
-//            Call<QuestionData> question = API_Adapter.getInstance().Question();
-//            question.enqueue(new Callback<QuestionData>() {
-//                @Override
-//                public void onResponse(Call<QuestionData> call, Response<QuestionData> response) {
-//
-//                }
-//
-//                @Override
-//                public void onFailure(Call<QuestionData> call, Throwable t) {
-//
-//                }
-//            });
-//
-//            //POST
-//            Call<DataTest> data = API_Adapter.getInstance().Duplicate("ID");
-//            data.enqueue(new Callback<DataTest>() {
-//                @Override
-//                public void onResponse(Call<DataTest> call, Response<DataTest> response) {
-//
-//                }
-//
-//                @Override
-//                public void onFailure(Call<DataTest> call, Throwable t) {
-//
-//                }
-//            });
+            Call<QuestionData> question = API_Adapter.getInstance().Question();
+            question.enqueue(new Callback<QuestionData>() {
+                @Override
+                public void onResponse(Call<QuestionData> call, Response<QuestionData> response) {
 
-            //파일업로드드
+                }
+
+                @Override
+                public void onFailure(Call<QuestionData> call, Throwable t) {
+
+                }
+            });
+
+            //POST
+            Call<DataTest> data = API_Adapter.getInstance().Duplicate("ID");
+            data.enqueue(new Callback<DataTest>() {
+                @Override
+                public void onResponse(Call<DataTest> call, Response<DataTest> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<DataTest> call, Throwable t) {
+
+                }
+            });
+
+            //FILE UPLOAD
             String dir = Environment.getExternalStorageDirectory().toString()+"/ISNTIT/profile_pic.png";
             File file = new File(dir);// initialize file here
 //            MultipartBody.Part filePart = MultipartBody.Part.createFormData("file", file.getName(), RequestBody.create(MediaType.parse("image/*"), file));
