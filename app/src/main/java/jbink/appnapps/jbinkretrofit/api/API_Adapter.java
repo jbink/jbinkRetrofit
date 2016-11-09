@@ -1,5 +1,8 @@
 package jbink.appnapps.jbinkretrofit.api;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
@@ -28,7 +31,7 @@ public class API_Adapter {
     public static final int CONNECT_TIMEOUT = 15;
     public static final int WRITE_TIMEOUT = 15;
     public static final int READ_TIMEOUT = 15;
-//    public static final String SERVER_URL = "http://appnapps.com/jbink/idol/";
+    public static final String SERVER_URL = "http://appnapps.com/jbink/";
 
     private static OkHttpClient client;
     private static API_Interface Interface;
@@ -58,20 +61,21 @@ public class API_Adapter {
 //                  .cookieJar(new JavaNetCookieJar(cookieManager)) //쿠키메니져 설정
                     .build();
 
+            Gson gson = new GsonBuilder()
+                    .setLenient()
+                    .create();
+
+            Interface = new Retrofit.Builder()
+                    .baseUrl(SERVER_URL)
+                    .client(client)
+//                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) //Rxandroid를 사용하기 위해 추가(옵션)
+                    .addConverterFactory(GsonConverterFactory.create(gson)) //Json Parser 추가
+                    .build().create(API_Interface.class); //인터페이스 연결
+
 
 
         }
         return Interface;
-    }
-
-    public void test(Class<API_Interface> dd, String server_url){
-        //Retrofit 설정
-        Interface = new Retrofit.Builder()
-                .baseUrl(server_url)
-                .client(client)
-//                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) //Rxandroid를 사용하기 위해 추가(옵션)
-                .addConverterFactory(GsonConverterFactory.create()) //Json Parser 추가
-                .build().create(dd); //인터페이스 연결
     }
 
 
