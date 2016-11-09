@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             });
 
             //FILE UPLOAD
-            String dir = Environment.getExternalStorageDirectory().toString()+"/ISNTIT/profile_pic.png";
+            String dir = Environment.getExternalStorageDirectory().toString()+"/file_name.png";
             File file = new File(dir);// initialize file here
 //            MultipartBody.Part filePart = MultipartBody.Part.createFormData("file", file.getName(), RequestBody.create(MediaType.parse("image/*"), file));
 //            Call<ResponseData> upload = API_Adapter.getInstance().uploadImage(filePart, "retrofit_upload");
